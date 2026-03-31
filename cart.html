@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>🛒 Your Cart</h2>
+
+{% for item in items %}
+    <p>{{ item.name }} - ₹{{ item.price }}</p>
+{% endfor %}
+
+<h3>Total: ₹{{ total }}</h3>
+
+<a href="{{ url_for('checkout') }}">💳 Checkout</a>
+<br><br>
+<a href="/">⬅ Back</a>
+
+</body>
+</html>

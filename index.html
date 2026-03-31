@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyShop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">MyShop</div>
+
+    <input class="search" type="text" placeholder="Search for products...">
+
+    <div class="nav-links">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('cart') }}">Cart</a>
+    </div>
+</div>
+
+<!-- PRODUCTS SECTION -->
+<div class="container">
+
+    <div class="products">
+
+        {% for product in products %}
+        <div class="card">
+
+            <!-- IMAGE -->
+            <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
+
+            <!-- DETAILS -->
+            <div class="card-content">
+                <h3>{{ product.name }}</h3>
+
+                <p class="category">{{ product.category }}</p>
+
+                <p class="price">₹{{ product.price }}</p>
+
+                <a class="btn" href="{{ url_for('add_to_cart', id=product.id) }}">
+                    Add to Cart
+                </a>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

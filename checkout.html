@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        button {
+            background-color: #6772e5;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5469d4;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Checkout</h1>
+
+<div class="box">
+
+{% if items %}
+
+    {% for item in items %}
+        <p>{{ item.name }} - ₹{{ item.price }}</p>
+    {% endfor %}
+
+    <hr>
+
+    <h3>Total: ₹{{ total }}</h3>
+
+    <br>
+
+    <a href="{{ url_for('create_checkout_session') }}">
+        <button>Pay Now</button>
+    </a>
+
+{% else %}
+    <p>Your cart is empty</p>
+{% endif %}
+
+</div>
+
+<br>
+
+<a href="{{ url_for('home') }}">Back to Home</a>
+
+</body>
+</html>
